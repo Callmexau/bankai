@@ -415,10 +415,11 @@ h1 em { color: #ddd0bc; font-weight: 400; }
   #hero-copy h1 { font-size: clamp(30px, 8.5vw, 36px); }
   .hero-description { max-width: 340px; font-size: 12px; }
   .hotspot { width: 44px; height: 44px; justify-content: center; transform: translate(-50%, -50%); }
-  .hotspot-ring { flex-basis: 26px; width: 26px; height: 26px; }
-  .hotspot-ring::before { inset: -5px; }
+  .hotspot-ring { flex-basis: 20px; width: 20px; height: 20px; box-shadow: 0 0 0 3px rgba(201,169,129,.11), 0 0 12px rgba(201,169,129,.42); }
+  .hotspot-ring::before { inset: -4px; }
+  .hotspot-ring > span { width: 4px; height: 4px; }
   .hotspot-label { display: none; }
-  .hotspot:hover .hotspot-ring, .hotspot:focus-visible .hotspot-ring { transform: scale(1.13); }
+  .hotspot:hover .hotspot-ring, .hotspot:focus-visible .hotspot-ring { transform: scale(1.08); }
   .hotspot[data-section="about"] { top: 69.4% !important; left: 49.5% !important; }
   .hotspot[data-section="expertise"] { top: 31% !important; left: 39% !important; }
   .hotspot[data-section="projects"] { top: 55.6% !important; left: 67.8% !important; }
