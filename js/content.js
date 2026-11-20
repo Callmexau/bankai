@@ -3,13 +3,15 @@ const certificateUrl = (filename) => encodeURI(`./Certifications/${filename}`);
 const projectImages = (filenames) => filenames.map((filename) => encodeURI(`./Proof of work/${filename}`));
 
 const proofOfWork = {
+  alpha: projectImages(["alpha.png", "alpha2.png", "alpha3.png"]),
   briefing: projectImages(["Briefing.png", "Briefing2.png", "Briefing3.png", "Briefing4.png", "Briefing5.png", "Briefing6.png"]),
   cimConvert: projectImages(["CimConvert.png"]),
   cimStage: projectImages(["CimStage.png", "CimStage2.png", "CimStage3.png"]),
+  ecobank: projectImages(["ecobank.jpeg", "ecobank2.jpeg", "ecobank3.jpeg", "ecobank4.jpeg"]),
   flowConvert: projectImages(["Flowconvert.jpeg"]),
   focuss: projectImages(["Focus.png", "Focus2.png", "Focus3.png", "Focus4.png"]),
   mccat: projectImages(["MCCAT.png", "MCCAT2.png"]),
-  raphael: projectImages(["Raphael.jpeg"]),
+  raphael: projectImages(["Raphael.png", "Raphael2.jpeg"]),
   sankara: projectImages(["Sankara.png"])
 };
 
@@ -94,8 +96,17 @@ export const translations = {
         ["Méthodologies", "Approches de travail et cycles de développement.", ["Agile", "Cascade", "2TUP", "Cycle en V"]]
       ],
       projectsTitle: "Des projets ancrés dans le réel.",
-      projectsBody: "Projets et réalisations en intelligence artificielle, développement web et logiciel desktop.",
+      projectsBody: "Projets et réalisations en applications métiers, développement web, intelligence artificielle et logiciel desktop.",
       projects: [
+        {
+          year: "2026",
+          type: "Application web",
+          title: "Track my Transfert",
+          description: "Plateforme sécurisée de suivi et de monitoring des transactions bancaires, avec alertes automatisées, développée pour Ecobank.",
+          technologies: ["Laravel", "MySQL"],
+          images: proofOfWork.ecobank,
+          url: null
+        },
         {
           year: "2025",
           type: "Application web",
@@ -131,6 +142,15 @@ export const translations = {
           technologies: ["API d’IA"],
           images: proofOfWork.raphael,
           url: "https://raphael-ia.vercel.app"
+        },
+        {
+          year: "",
+          type: "Site web vitrine",
+          title: "Studio Alpha — Photographie & vidéo",
+          description: "Site web vitrine réalisé pour un studio de photographie et de vidéo.",
+          technologies: [],
+          images: proofOfWork.alpha,
+          url: null
         },
         {
           year: "",
@@ -328,8 +348,17 @@ export const translations = {
         ["Methodologies", "Project approaches and software development lifecycles.", ["Agile", "Waterfall", "2TUP", "V-Model"]]
       ],
       projectsTitle: "Projects grounded in real needs.",
-      projectsBody: "Projects and work spanning conversational AI, web development and desktop software.",
+      projectsBody: "Projects spanning business applications, web development, conversational AI and desktop software.",
       projects: [
+        {
+          year: "2026",
+          type: "Web application",
+          title: "Track my Transfert",
+          description: "A secure banking transaction monitoring and tracking platform with automated alerts, developed for Ecobank.",
+          technologies: ["Laravel", "MySQL"],
+          images: proofOfWork.ecobank,
+          url: null
+        },
         {
           year: "2025",
           type: "Web application",
@@ -365,6 +394,15 @@ export const translations = {
           technologies: ["AI APIs"],
           images: proofOfWork.raphael,
           url: "https://raphael-ia.vercel.app"
+        },
+        {
+          year: "",
+          type: "Showcase website",
+          title: "Studio Alpha — Photography & Video",
+          description: "A showcase website created for a photography and video studio.",
+          technologies: [],
+          images: proofOfWork.alpha,
+          url: null
         },
         {
           year: "",
