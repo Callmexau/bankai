@@ -12,6 +12,10 @@ python -m http.server 8000
 
 Ouvrir ensuite `http://localhost:8000`.
 
+## Déploiement sur Netlify
+
+Le site est statique et ne nécessite ni `package.json` ni compilation. `netlify.toml` configure Netlify pour publier la racine du dépôt sans lancer `npm run build`.
+
 ## Architecture
 
 - `index.html` : structure, chargement et interface principale.
