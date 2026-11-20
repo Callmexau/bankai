@@ -117,7 +117,7 @@ function renderSection() {
     about: `
       <p class="panel-copy">${content.aboutBody}</p>
       <div class="statement"><span>${text("labels.position")}</span><p>${content.aboutVision}</p></div>
-      <a class="panel-action" href="${content.cvUrl}" target="_blank" rel="noreferrer">${text("labels.downloadCV")} <span aria-hidden="true">↗</span></a>`,
+      <a class="panel-action" href="${content.cvUrl}" target="_blank" rel="noreferrer">${text("labels.downloadCV")}</a>`,
     expertise: `
       <p class="panel-copy">${content.expertiseBody}</p>
       <div class="skill-grid">${content.skills.map(([title, description, technologies], index) => `
@@ -154,7 +154,7 @@ function renderSection() {
             </div>
           ` : ""}
           ${project.technologies.length ? `<ul class="tag-list">${project.technologies.map((technology) => `<li>${technology}</li>`).join("")}</ul>` : ""}
-          ${project.url ? `<a class="project-link" href="${project.url}" target="_blank" rel="noreferrer">${text("labels.viewProject")} <span aria-hidden="true">↗</span></a>` : ""}
+          ${project.url ? `<a class="project-link" href="${project.url}" target="_blank" rel="noreferrer">${text("labels.viewProject")}</a>` : ""}
         </article>
       `).join("")}</div>`,
     experience: `
@@ -183,7 +183,7 @@ function renderSection() {
       <div class="certificate-list">${content.certifications.map((certificate) => `
         <article class="certificate-item">
           <div><span class="timeline-label">${text("labels.studies")}</span><h3>${certificate.title}</h3><p>${certificate.issuer}</p></div>
-          ${certificate.url ? `<a class="certificate-link" href="${certificate.url}" target="_blank" rel="noreferrer">${text("labels.viewCertificate")} <span aria-hidden="true">↗</span></a>` : ""}
+          ${certificate.url ? `<a class="certificate-link" href="${certificate.url}" target="_blank" rel="noreferrer">${text("labels.viewCertificate")}</a>` : ""}
         </article>
       `).join("")}</div>`,
     contact: `

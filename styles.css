@@ -226,11 +226,8 @@ h1 { margin: 21px 0 19px; font: 500 clamp(43px, 5.4vw, 78px)/1.08 var(--display)
 #hero-copy h1 { font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(35px, 4.1vw, 56px); font-weight: 500; line-height: 1.05; letter-spacing: .015em; word-spacing: .08em; }
 h1 em { color: #ddd0bc; font-weight: 400; }
 .hero-description { max-width: 390px; margin-bottom: 29px; color: rgba(243,240,233,.72); font-size: 13px; line-height: 1.9; }
-.explore-button { display: inline-flex; align-items: center; gap: 21px; padding: 13px 15px 13px 0; border: 0; border-top: 1px solid rgba(255,255,255,.4); background: transparent; font-size: 11px; transition: color .2s; }
+.explore-button { display: inline-flex; align-items: center; padding: 13px 15px 13px 0; border: 0; border-top: 1px solid rgba(255,255,255,.4); background: transparent; font-size: 11px; transition: color .2s; }
 .explore-button:hover { color: var(--accent); }
-.arrow { display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--line); border-radius: 50%; font-size: 15px; transition: transform .25s, border-color .25s; }
-.explore-button:hover .arrow { border-color: var(--accent); transform: translate(2px,-2px); }
-
 .hotspots { position: absolute; z-index: 4; inset: 0; transition: opacity .3s; }
 .hotspots.is-hidden { opacity: 0; pointer-events: none; }
 .hotspot {
@@ -309,7 +306,7 @@ h1 em { color: #ddd0bc; font-weight: 400; }
 .project-shot img { display: block; max-width: 100%; max-height: 220px; object-fit: contain; transition: transform .3s var(--ease); }
 .project-shot:hover img { transform: scale(1.025); }
 .project-shot:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
-.project-link, .certificate-link, .panel-action { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font-size: 10px; transition: color .2s; }
+.project-link, .certificate-link, .panel-action { display: inline-flex; align-items: center; color: var(--accent); font-size: 10px; transition: color .2s; }
 .project-link { margin-top: 14px; }
 .project-link:hover, .certificate-link:hover, .panel-action:hover { color: #f0dcc1; }
 .panel-action { margin-top: 2px; padding: 12px 0; border-top: 1px solid var(--line); }
