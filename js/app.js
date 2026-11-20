@@ -104,6 +104,7 @@ function renderSceneCaption() {
   const scene = scenes[state.scene];
   const shot = scene.placeholder === "office" ? "office" : "detail";
   elements.placeholderDescription.textContent = text(`placeholderShots.${shot}`);
+  elements.placeholderDescription.closest(".placeholder-caption").hidden = !elements.placeholderDescription.textContent;
   const sceneOrder = ["office", "desk", "skills", "computer", "books", "documents", "phone"];
   document.querySelector("#scene-index").textContent = `${String(sceneOrder.indexOf(state.scene) + 1).padStart(2, "0")} — ${String(sceneOrder.length).padStart(2, "0")}`;
 }

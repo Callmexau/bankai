@@ -414,7 +414,9 @@ h1 em { color: #ddd0bc; font-weight: 400; }
   h1 { margin: 17px 0; font-size: clamp(40px, 11vw, 60px); }
   #hero-copy h1 { font-size: clamp(30px, 8.5vw, 36px); }
   .hero-description { max-width: 340px; font-size: 12px; }
-  .hotspot { transform: translate(-50%, -50%) scale(.86); }
+  .hotspot { width: 44px; height: 44px; justify-content: center; transform: translate(-50%, -50%); }
+  .hotspot-ring { flex-basis: 26px; width: 26px; height: 26px; }
+  .hotspot-ring::before { inset: -5px; }
   .hotspot-label { display: none; }
   .hotspot:hover .hotspot-ring, .hotspot:focus-visible .hotspot-ring { transform: scale(1.13); }
   .hotspot[data-section="about"] { top: 69.4% !important; left: 49.5% !important; }

@@ -55,7 +55,7 @@ export const translations = {
       phone: "Réseaux professionnels"
     },
     placeholderShots: {
-      office: "Vue d’ensemble · bureau professionnel, lumière naturelle, deux écrans",
+      office: "",
       detail: "Perspective rapprochée · même espace, cadrage de l’objet sélectionné"
     },
     labels: {
@@ -289,7 +289,7 @@ export const translations = {
       phone: "Professional networks"
     },
     placeholderShots: {
-      office: "Wide view · professional office, natural light, dual monitors",
+      office: "",
       detail: "Closer perspective · same space, framing the selected object"
     },
     labels: {
