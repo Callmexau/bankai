@@ -15,7 +15,7 @@ export const scenes = {
       { id: "skills", section: "expertise", x: 60.5, y: 16 },
       { id: "computer", section: "projects", x: 66.3, y: 49.5 },
       { id: "books", section: "education", x: 85.7, y: 60.7 },
-      { id: "documents", section: "experience", x: 77.5, y: 68.9 },
+      { id: "documents", section: "experience", x: 78.7, y: 68.9 },
       { id: "phone", section: "contact", x: 70.7, y: 67.3 }
     ]
   },
@@ -47,12 +47,12 @@ export const scenes = {
     image: null,
     alt: { fr: "Détail des documents professionnels, photographie de référence à intégrer", en: "Professional documents detail, reference photograph to be added" },
     placeholder: "detail",
-    camera: { desktop: { x: 77.5, y: 68.9, zoom: 2.25 }, mobile: { x: 77.5, y: 68.9, zoom: 1.88 } }
+    camera: { desktop: { x: 78.7, y: 68.9, zoom: 2.25 }, mobile: { x: 78.1, y: 68.9, zoom: 1.88 } }
   },
   phone: {
     image: null,
     alt: { fr: "Détail du smartphone sur le bureau, photographie de référence à intégrer", en: "Smartphone on the desk, reference photograph to be added" },
     placeholder: "detail",
-    camera: { desktop: { x: 70.7, y: 67.3, zoom: 2.6 }, mobile: { x: 66.6, y: 67.3, zoom: 2.1 } }
+    camera: { desktop: { x: 70.7, y: 67.3, zoom: 2.6 }, mobile: { x: 67.8, y: 67.3, zoom: 2.1 } }
   }
 };

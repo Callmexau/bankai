@@ -16,6 +16,7 @@ const elements = {
   accessibleLanguages: document.querySelector("#accessible-languages"),
   hotspots: document.querySelector("#hotspots"),
   heroCopy: document.querySelector("#hero-copy"),
+  heroTitle: document.querySelector("#hero-title"),
   panel: document.querySelector("#scene-panel"),
   panelContent: document.querySelector("#panel-content"),
   curtain: document.querySelector("#transition-curtain"),
@@ -40,6 +41,21 @@ function text(path) {
   return path.split(".").reduce((value, key) => value?.[key], translations[state.language]) ?? path;
 }
 
+function renderHeroTitle(title) {
+  const words = title.trim().split(/\s+/);
+  elements.heroTitle.replaceChildren();
+  elements.heroTitle.setAttribute("aria-label", title);
+  const givenName = document.createElement("span");
+  givenName.className = "hero-name-given";
+  givenName.setAttribute("aria-hidden", "true");
+  givenName.textContent = words.slice(0, -1).join(" ");
+  const familyName = document.createElement("span");
+  familyName.className = "hero-name-family";
+  familyName.setAttribute("aria-hidden", "true");
+  familyName.textContent = words[words.length - 1];
+  elements.heroTitle.append(givenName, document.createTextNode(" "), familyName);
+}
+
 function renderLanguageFrame() {
   const languages = translations[state.language].content.languages;
   elements.languageFrame.innerHTML = `
@@ -57,7 +73,8 @@ function setLanguage(language) {
     ? "Exaucé Jackson L. — Ingénieur Logiciel"
     : "Exaucé Jackson L. — Software Engineer";
   document.querySelectorAll("[data-i18n]").forEach((node) => {
-    node.textContent = text(node.dataset.i18n);
+    if (node.id === "hero-title") renderHeroTitle(text(node.dataset.i18n));
+    else node.textContent = text(node.dataset.i18n);
   });
   document.querySelector("#copyright-note").textContent = text("copyright").replace("{year}", String(new Date().getFullYear()));
   document.querySelectorAll("[data-i18n-aria]").forEach((node) => {
@@ -386,8 +403,9 @@ function wait(duration) {
 
 function revealHomeName() {
   elements.heroCopy.classList.remove("is-name-revealing");
-  if (!state.motion) return;
-  requestAnimationFrame(() => elements.heroCopy.classList.add("is-name-revealing"));
+  void elements.heroCopy.offsetWidth;
+  elements.heroCopy.classList.remove("is-name-pending");
+  if (state.motion) elements.heroCopy.classList.add("is-name-revealing");
 }
 
 function closeMenu() {
