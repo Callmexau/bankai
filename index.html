@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111312">
+    <meta name="description" content="Ingénieur logiciel. Développement fullstack, expériences professionnelles et réalisations.">
+    <title>Exaucé Jackson L. — Ingénieur Logiciel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <div class="loader" id="loader" role="status" aria-live="polite">
+      <div class="loader-inner">
+        <img class="loader-logo" src="./assets/brand/loading-logo.png" alt="">
+        <span class="loader-caption" data-i18n="loading">Préparation de l’espace</span>
+        <span class="loader-track"><span id="loader-progress"></span></span>
+        <span class="loader-number" id="loader-number">00</span>
+      </div>
+    </div>
+
+    <div class="site-shell" id="site-shell" aria-hidden="true">
+      <header class="topbar">
+        <a class="wordmark" href="#office" id="wordmark" aria-label="Retour à l’accueil">
+          <img class="wordmark-logo" src="./assets/brand/exauce-jackson-logo.png" alt="" width="1666" height="383">
+        </a>
+        <nav class="main-nav" id="main-nav" aria-label="Navigation principale" data-i18n-aria="mainNavigation"></nav>
+        <div class="header-actions">
+          <button class="sound-button" id="motion-toggle" type="button" aria-label="Réduire les animations" title="Réduire les animations">
+            <span class="motion-glyph" aria-hidden="true">◌</span>
+            <span data-i18n="motion">Mouvement</span>
+          </button>
+          <button class="language-switch" id="language-switch" type="button" aria-label="Switch language">EN</button>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Ouvrir le menu" data-i18n-aria="openMenu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="stage" id="stage" aria-label="Explorer le bureau" data-i18n-aria="stageLabel">
+          <div class="scene-world" id="scene-world">
+            <div class="scene-image" id="scene-image" aria-hidden="true"></div>
+            <div class="scene-placeholder" id="scene-placeholder" aria-hidden="true">
+              <div class="room-window"></div>
+              <div class="room-light"></div>
+              <div class="room-floor"></div>
+              <div class="room-shelf"><i></i><i></i><i></i><i></i></div>
+              <div class="room-skill-board">
+                <span class="room-board-title" data-i18n="labels.skillsBoard">COMPÉTENCES TECHNIQUES</span>
+                <div class="room-board-tags">
+                  <span>Laravel</span><span>Electron</span><span>Streamlit</span><span>PHP</span>
+                  <span>SQL</span><span>JavaScript</span><span>Python</span><span>C</span>
+                  <span>MySQL</span><span>PostgreSQL</span><span>WordPress</span><span>Git</span>
+                  <span>GitHub</span><span>Node.js</span><span>Agile</span><span>2TUP</span>
+                </div>
+              </div>
+              <div class="room-desk"></div>
+              <div class="room-chair"></div>
+              <div class="room-lamp"></div>
+              <div class="room-language-frame" id="room-language-frame" aria-hidden="true"></div>
+              <div class="room-screen room-screen-one">
+                <div class="screen-editor">
+                  <div class="screen-titlebar">
+                    <span class="screen-window-controls"><i></i><i></i><i></i></span>
+                    <span class="screen-tab-label">src/projects.ts</span>
+                  </div>
+                  <div class="screen-sidebar"><span></span><span></span><span></span><span></span></div>
+                  <div class="screen-code">
+                    <div class="screen-line"><span class="screen-line-number">01</span><code><span class="token-keyword">const</span> projects = [</code></div>
+                    <div class="screen-line"><span class="screen-line-number">02</span><code>  <span class="token-string">"Raphael"</span>,</code></div>
+                    <div class="screen-line"><span class="screen-line-number">03</span><code>  <span class="token-string">"FlowConvert"</span>,</code></div>
+                    <div class="screen-line"><span class="screen-line-number">04</span><code>  <span class="token-string">"MCCAT E-Stage"</span>,</code></div>
+                    <div class="screen-line"><span class="screen-line-number">05</span><code>];</code></div>
+                  </div>
+                </div>
+              </div>
+              <div class="room-screen room-screen-two">
+                <div class="screen-editor">
+                  <div class="screen-titlebar">
+                    <span class="screen-window-controls"><i></i><i></i><i></i></span>
+                    <span class="screen-tab-label">src/projects.tsx</span>
+                  </div>
+                  <div class="screen-sidebar"><span></span><span></span><span></span><span></span></div>
+                  <div class="screen-code">
+                    <div class="screen-line"><span class="screen-line-number">01</span><code><span class="token-keyword">export const</span> featuredProjects = [</code></div>
+                    <div class="screen-line"><span class="screen-line-number">02</span><code>  { title: <span class="token-string">"Raphael"</span>, type: <span class="token-string">"AI"</span> },</code></div>
+                    <div class="screen-line"><span class="screen-line-number">03</span><code>  { title: <span class="token-string">"FlowConvert"</span>, type: <span class="token-string">"Desktop"</span> },</code></div>
+                    <div class="screen-line"><span class="screen-line-number">04</span><code>  { title: <span class="token-string">"MCCAT E-Stage"</span>, type: <span class="token-string">"Web"</span> },</code></div>
+                    <div class="screen-line"><span class="screen-line-number">05</span><code>];</code></div>
+                  </div>
+                  <div class="screen-terminal">
+                    <div class="terminal-heading">TERMINAL — zsh</div>
+                    <div class="terminal-line"><span>$</span> npm run build</div>
+                    <div class="terminal-line terminal-success">✓ project gallery ready</div>
+                    <div class="terminal-line"><span>$</span> git status --short</div>
+                  </div>
+                </div>
+              </div>
+              <div class="room-monitor-stand room-monitor-stand-one"></div>
+              <div class="room-monitor-stand room-monitor-stand-two"></div>
+              <div class="room-books"></div>
+              <div class="room-keyboard"></div>
+              <div class="room-mouse"></div>
+              <div class="room-paper"></div>
+              <div class="room-phone"></div>
+            </div>
+          </div>
+          <div class="placeholder-caption">
+            <span class="placeholder-description" id="placeholder-description"></span>
+          </div>
+          <div class="stage-shade"></div>
+
+          <div class="stage-meta">
+            <span class="eyebrow"><span class="status-dot"></span><span data-i18n="location">L’espace de travail</span></span>
+            <span class="scene-index" id="scene-index">01 — 07</span>
+          </div>
+
+          <div class="hero-copy" id="hero-copy">
+            <p class="eyebrow" data-i18n="heroEyebrow">INGÉNIEUR LOGICIEL · PORTFOLIO</p>
+            <h1 data-i18n="heroTitle">Ingénieur Logiciel</h1>
+            <p class="hero-description" data-i18n="heroDescription">Entrez dans mon univers professionnel et découvrez les idées, les projets et le parcours derrière chaque ligne de code.</p>
+            <button class="explore-button" id="explore-button" type="button">
+              <span data-i18n="explore">Explorer le bureau</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <div class="hotspots" id="hotspots" aria-label="Objets interactifs du bureau" data-i18n-aria="hotspotsLabel"></div>
+          <p class="visually-hidden" id="accessible-languages" aria-live="polite"></p>
+
+          <section class="scene-panel" id="scene-panel" aria-live="polite" aria-hidden="true">
+            <button class="back-button" id="back-button" type="button">
+              <span aria-hidden="true">←</span><span data-i18n="backToOffice">Retour au bureau</span>
+            </button>
+            <div class="panel-content" id="panel-content"></div>
+          </section>
+
+          <div class="stage-footer">
+            <span class="footer-note" data-i18n="footerNote">UNE EXPLORATION INTERACTIVE DU PARCOURS</span>
+            <span class="scroll-hint"><span class="scroll-line"></span><span data-i18n="hotspotHint">Sélectionnez un objet pour explorer</span></span>
+            <span class="copyright-note" id="copyright-note" data-i18n="copyright">© {year} J. Exaucé Jackson LOUNTADILADIO. Tous droits réservés.</span>
+          </div>
+        </section>
+      </main>
+      <div class="transition-curtain" id="transition-curtain" aria-hidden="true"></div>
+    </div>
+  </body>
+</html>
