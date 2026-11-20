@@ -3,6 +3,7 @@ import { scenes } from "./scenes.js";
 
 const elements = {
   loader: document.querySelector("#loader"),
+  loaderRain: document.querySelector("#loader-rain"),
   loaderProgress: document.querySelector("#loader-progress"),
   loaderNumber: document.querySelector("#loader-number"),
   shell: document.querySelector("#site-shell"),
@@ -31,6 +32,9 @@ const state = {
   imageCache: new Map(),
   busy: false
 };
+
+const cameraDuration = 1550;
+const objectActivationDuration = 1600;
 
 function text(path) {
   return path.split(".").reduce((value, key) => value?.[key], translations[state.language]) ?? path;
@@ -289,12 +293,39 @@ function applyCamera(sceneId, animate = true) {
   elements.sceneWorld.classList.toggle("is-moving", animate && state.motion);
 }
 
+function startTransition(section) {
+  const cameraRoll = {
+    about: "-0.45deg",
+    expertise: "0.5deg",
+    projects: "-0.35deg",
+    education: "0.55deg",
+    experience: "-0.45deg",
+    contact: "0.4deg",
+    return: "0deg"
+  };
+  elements.sceneWorld.style.setProperty("--camera-roll", state.motion ? cameraRoll[section] : "0deg");
+  elements.stage.dataset.transition = section;
+  elements.stage.dataset.transitionPhase = "approach";
+  elements.stage.classList.toggle("is-choreographing", state.motion);
+}
+
+function activateTransition() {
+  elements.stage.dataset.transitionPhase = "activation";
+}
+
+function finishTransition() {
+  elements.stage.classList.remove("is-choreographing");
+  delete elements.stage.dataset.transition;
+  delete elements.stage.dataset.transitionPhase;
+}
+
 async function navigate(section) {
   if (!sectionOrder.includes(section) || state.busy) return;
   const sceneId = sectionToScene[section];
   if (state.section === section) return;
   state.busy = true;
   const nextScene = loadImage(sceneId);
+  startTransition(section);
   applyCamera(sceneId);
   elements.heroCopy.classList.add("is-hidden");
   elements.hotspots.classList.add("is-hidden");
@@ -304,16 +335,20 @@ async function navigate(section) {
   state.section = section;
   await nextScene;
   await setScene(sceneId, true);
+  await wait(state.motion ? cameraDuration : 0);
+  elements.sceneWorld.classList.remove("is-moving");
+  activateTransition();
+  elements.curtain.classList.remove("is-active");
+  elements.curtain.classList.add("is-clearing");
+  await wait(state.motion ? objectActivationDuration : 0);
   renderNavigation();
   renderSection();
   elements.panel.classList.add("is-visible");
   elements.panel.classList.remove("is-transitioning");
   elements.panel.setAttribute("aria-hidden", "false");
-  elements.curtain.classList.remove("is-active");
-  elements.curtain.classList.add("is-clearing");
-  await wait(state.motion ? 1550 : 0);
+  await wait(state.motion ? 650 : 0);
   elements.curtain.classList.remove("is-clearing");
-  elements.sceneWorld.classList.remove("is-moving");
+  finishTransition();
   state.busy = false;
   loadImage(sectionToScene[sectionOrder[(sectionOrder.indexOf(section) + 1) % sectionOrder.length]]);
 }
@@ -321,28 +356,38 @@ async function navigate(section) {
 async function returnToOffice() {
   if (state.busy) return;
   state.busy = true;
+  startTransition("return");
   applyCamera("office");
   elements.panel.classList.add("is-transitioning");
   elements.curtain.classList.add("is-active");
   await wait(state.motion ? 180 : 0);
   state.section = null;
   await setScene("office", true);
+  await wait(state.motion ? cameraDuration : 0);
+  elements.sceneWorld.classList.remove("is-moving");
   renderNavigation();
   elements.panel.classList.remove("is-visible");
   elements.panel.classList.remove("is-transitioning");
   elements.panel.setAttribute("aria-hidden", "true");
   elements.heroCopy.classList.remove("is-hidden");
   elements.hotspots.classList.remove("is-hidden");
+  revealHomeName();
   elements.curtain.classList.remove("is-active");
   elements.curtain.classList.add("is-clearing");
-  await wait(state.motion ? 1550 : 0);
+  await wait(state.motion ? 400 : 0);
   elements.curtain.classList.remove("is-clearing");
-  elements.sceneWorld.classList.remove("is-moving");
+  finishTransition();
   state.busy = false;
 }
 
 function wait(duration) {
   return new Promise((resolve) => window.setTimeout(resolve, duration));
+}
+
+function revealHomeName() {
+  elements.heroCopy.classList.remove("is-name-revealing");
+  if (!state.motion) return;
+  requestAnimationFrame(() => elements.heroCopy.classList.add("is-name-revealing"));
 }
 
 function closeMenu() {
@@ -366,9 +411,27 @@ function updateMotionControl() {
   elements.motionToggle.setAttribute("aria-pressed", String(!state.motion));
 }
 
+function renderLoaderRain() {
+  const columnCount = Math.max(12, Math.min(100, Math.floor(window.innerWidth / 9)));
+  const linesPerColumn = Math.ceil(window.innerHeight / 12);
+
+  elements.loaderRain.innerHTML = Array.from({ length: columnCount }, (_, columnIndex) => {
+    const duration = (4 + Math.random() * 7).toFixed(2);
+    const delay = (Math.random() * Number(duration)).toFixed(2);
+    const opacity = (0.25 + Math.random() * 0.75).toFixed(2);
+    const fontSize = (8 + Math.random() * 4).toFixed(1);
+    const color = `rgb(${20 + Math.floor(Math.random() * 46)}, ${165 + Math.floor(Math.random() * 91)}, ${18 + Math.floor(Math.random() * 42)})`;
+    const bits = Array.from({ length: linesPerColumn }, () => Math.random() < 0.5 ? "0" : "1").join("\n");
+    return `
+      <div class="loader-rain-column" style="left:${(columnIndex / columnCount) * 100}%;width:${100 / columnCount}%;--fall-duration:${duration}s;--fall-delay:-${delay}s;--stream-opacity:${opacity};--stream-size:${fontSize}px;--stream-color:${color}"><span>${bits}</span><span>${bits}</span></div>
+    `;
+  }).join("");
+}
+
 function startLoader() {
+  renderLoaderRain();
   const started = performance.now();
-  const duration = 850;
+  const duration = 5000;
   let imageReady = false;
   loadImage("office").then(() => {
     imageReady = true;
@@ -387,6 +450,7 @@ function startLoader() {
     window.setTimeout(() => {
       elements.loader.classList.add("is-done");
       elements.shell.removeAttribute("aria-hidden");
+      window.setTimeout(revealHomeName, 700);
     }, 140);
   }
   requestAnimationFrame(tick);
